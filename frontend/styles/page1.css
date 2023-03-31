@@ -1,0 +1,197 @@
+
+body{
+    background-color:#070708c4;
+    font-family: 'Manrope', sans-serif;
+}
+.logo {
+    margin-left: 16vh;
+    width: 15%;
+}
+.sentence{
+    color: rgb(255, 254, 254);
+}
+.text-solution {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin-left:7.5vw;
+    color: #f08804;
+    line-break: 40px;
+}
+.btn {
+    background: linear-gradient(96.14deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+    border-radius: 6vh;
+    color: white;
+    width:5vw;
+    height: 3vh;
+    padding-bottom: 1vh;
+    padding-left: 2vh;
+    display: flex;
+    flex-direction: row;
+    margin-right: -4.5vh;
+}
+textarea, input { outline: none; }
+.cl {
+    margin-top: -1.5vh;
+    margin-right:5px ;
+}
+.up {
+    font-size: 15px;
+  font-weight: bold;
+    margin-top: 1.8vh;
+}
+.start {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.end {
+background: linear-gradient(96.14deg, #3A8EF6 -10.84%, #6F3AFA 196.74%);
+border-radius: 17.0492px;
+height: 6vh;
+width: 10vw;
+border: transparent;
+margin-left: 6vh;
+margin-top: 3vh;
+font-weight: bold;
+font-family: 'Poppins', sans-serif;
+color: white;
+cursor: pointer;
+}
+.heading {
+    margin-top: 15vh;
+    margin-left: 40vw;
+}
+.p1 {
+    margin-top: -4.5%;
+    margin-left: 7.5%;
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.slides {
+    margin-left: 17%;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;   
+    list-style-type: none; 
+    cursor: pointer;
+}
+.part1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+/* .text {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 50%;
+    width: 70%;
+    margin-left: 25%;
+} */
+
+.text-img {
+    margin-left: 7.5%;
+    height: 40%;
+    width: 40%;
+}
+.doctor {
+    
+    height: 90%;
+    width: 90%;
+}
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 4%;
+    margin-top: 8%;
+}
+.card1 {
+    display: flex;
+    flex-direction: column;
+    line-height: 5px;
+}
+.card_img {
+    height: 40%;
+    width: 80%;
+    /* background-color: aqua; */
+    border-radius: 35px;
+    margin-bottom: 3%;
+}
+.searchform {
+    background: #F9F7F7;
+    box-shadow: 2px 6px 4px rgba(142, 145, 139, 0.4);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F3F3FD;
+    height: 8vh;
+    width: 35vw;
+    margin-top:8vh;
+    margin-left: 7.2vw;
+}
+
+.all {
+    width: 60%;
+    height: 6vh;
+    background-color: transparent;
+    border:transparent;
+    text-decoration: none;
+    padding-left: 20px;
+
+
+}
+.searchbar
+{ 
+  cursor: pointer;
+  width: 25px;
+  height:25px;
+  border: 0;
+  border:transparent;
+  text-decoration: none;
+  margin-right: 5%;
+  
+}
+.buttonimage {
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    
+}
+
+
+
+.card_info {
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 1vh;
+    margin-bottom: 3.5vh;
+}
+.hospitalName {
+    width:14vw;
+    height: 6vh;
+    border: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-left: -3vw;
+    margin-top: -1.5vh;
+    margin-bottom: -1.5vh;
+    box-shadow: 2px 6px 4px rgb(145 139 139 / 40%);
+    
+}
+.star {
+    margin-top: -1vh;
+    width:22%;
+}
