@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper</title>
+</head>
+<body>
+    <h3>The submitted link was {{link}}</h3>
+    <ul>
+        {% for cus_res in cus_res %}
+            <li>{{cus_res}}</li>
+        {% endfor %}
+    </ul>
+    <!-- Use a for loop to print each element in {{cus_rev}} -->
+    <ul>
+        {% for cus_rev in cus_rev %}
+            <li>{{cus_rev}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+    {{summary}}
+    <h2>Product Info</h2>
+    <ul>
+        {% for pro in pro_result %}
+            <li>{{pro}}</li>
+        {% endfor %}
+    </ul>
+    <h2>Review Images</h2>
+    <!--Display Images from rev_img list-->
+    <ul>
+        {% for img in rev_img %}
+            <li>{{img}}</li>
+            <li><img src="{{img}}" alt=""  style="width: 10%;height:10%;"></li>
+        {% endfor %}
+
+</body>
+</html>
