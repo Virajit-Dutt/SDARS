@@ -1,6 +1,8 @@
 
 # import module
 import requests
+import openai
+openai.api_key = "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"
 from bs4 import BeautifulSoup
   
 HEADERS = ({'User-Agent':
@@ -14,6 +16,14 @@ HEADERS = ({'User-Agent':
 def getdata(url):
     r = requests.get(url, headers=HEADERS)
     return r.text
+
+# Use ChatGPT to summarize the review
+def chatgpt_summarize(review):
+    # from transformers import pipeline
+    # summarizer = pipeline("summarization")
+    # summary = summarizer(review, max_length=100, min_length=30, do_sample=False)
+    summary = "This is a summary"
+    return summary
   
   
 def html_code(url):
@@ -49,9 +59,12 @@ def cus_rev(soup):
   
     for item in soup.find_all("div", class_="a-expander-content reviewText review-text-content a-expander-partial-collapse-content"):
         data_str = data_str + item.get_text()
-  
+    
     result = data_str.split("\n")
+    # print(result)
     return (result)
+
+
   
   
 
@@ -93,4 +106,20 @@ def review_sentiment(review):
     prediction = 1
     return prediction
 
-    
+def summarizer(review):
+    reviews_text = '\n'.join(review)
+
+    # Use the GPT API to generate a summary of the reviews
+    model_engine = "text-davinci-002"
+    summary = openai.Completion.create(
+        engine=model_engine,
+        prompt=f"Please summarize the following customer reviews:\n{reviews_text}\n\nSummary:",
+        max_tokens=200,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    # Print the summary
+    print(summary.choices[0].text.strip())
+    return summary.choices[0].text.strip()   
