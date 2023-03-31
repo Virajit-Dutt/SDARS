@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static\styles\page1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <title>Hospitalify.US</title>
+</head>
+
+
+<!-- images -->
+{{summarize}}
+<!-- Display only reviews  -->
+<table class="min-w-full divide-y divide-gray-200">
+    <thead class="sr-only">
+      <tr>
+        <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Review</th>
+        
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      {% for cus_rev in cus_rev %}
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ cus_rev }}</td>
+         
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+<!-- <div class="part1">
+    <h3>The submitted link was {{link}}</h3>
+    <ul>
+        {% for cus_res in cus_res %}
+            <li>{{cus_res}}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for cus_rev in cus_rev %}
+            <li>{{cus_rev}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+    
+    <h2>Product Info</h2>
+    <ul>
+        {% for pro in pro_result %}
+            <li>{{pro}}</li>
+        {% endfor %}
+    </ul>
+    <h2>Review Images</h2>
+    <ul>
+        {% for img in rev_img %}
+            <li>{{img}}</li>
+            <li><img src="{{img}}" alt=""  style="width: 10%;height:10%;"></li>
+        {% endfor %}
+    </ul>
+    </div> -->
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+   

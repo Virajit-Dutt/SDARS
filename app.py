@@ -1,104 +1,63 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from pyrebase import pyrebase
-from dotenv import load_dotenv
-import os
-import ast
-
-load_dotenv()
-
-config = ast.literal_eval(os.environ['config'])
-firebase = pyrebase.initialize_app(config)
-
-db = firebase.database()
-auth = firebase.auth()
+#Flask App
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import session as login_session
+from flask import make_response
+from sqlalchemy import create_engine
+from scraperbs import getdata, html_code, cus_data, cus_rev, product_info, rev_img, review_sentiment, summarizer
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
+#First Page Render - Home Page
 
-
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if ('user' in session):
-        return redirect(url_for('home'))
-    
-    if request.method== 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        try:
-            user = auth.sign_in_with_email_and_password(email, password)
-            print('Logged in')
-            session['user'] = email
-            print(session['user'])
-        except:
-            if email == '':
-                error = 'Email is required'
-                print('Email is required')
-            elif password == '':
-                error = 'Password is required'
-                print('Password is required')
-            else:
-                error = 'Invalid Email or Password'
-                print('Invalid email or password')
-                
-
-            return render_template('login.html', 
-                                   email=email,
-                                   password=password,
-                                   error=error)
-
-        return redirect(url_for('home'))
-    return render_template('login.html')
-
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if ('user' in session):
-        return redirect(url_for('home'))
-    
-    if request.method== 'POST':
-        error = ''
-        email = request.form['email']
-        password = request.form['password']
-
-        try:
-            user = auth.create_user_with_email_and_password(email, password)
-            print('User Successfully Created')
-        
-        except:
-            if email == '':
-                error = 'Email is required'
-                print('Email is required')
-            elif password == '':
-                error = 'Password is required'
-                print('Password is required')
-            else:
-                error = 'Email already in use'
-                print('Email already in use')
-
-            return render_template('signup.html', 
-                                   email=email,
-                                   password=password,
-                                   error=error)
-
-        return redirect(url_for('home'))
-    
-    return render_template('signup.html')
-
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    return render_template('home.html')
+    link = ""
+    #Request for link from index.html
+    if request.method == 'POST':
+        link = request.form['link']
+        #redirect to scrape route
+        return redirect(url_for('scrape', link=link))
+    return render_template('index.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('user', None)
-    return redirect(url_for('index'))
+# Web Scraping route
+@app.route('/scrape', methods=['GET', 'POST'])
+def scrape():
+    #return to scrape.html 
+    link = request.args.get('link')
+    #Go to the product reviews and scrape the data
+    data = html_code(link)
+    #return customer data
+    cus_res = cus_data(data)
+    rev_data = cus_rev(data)
+    rev_result = []
+    for i in rev_data:
+        if i == "":
+            pass
+        else:
+            rev_result.append(i)
+
+    pro_result = product_info(data)
+    #parse list items into strings in product_info
+    pro_result = ['\n'.join(i) for i in pro_result]
+
+    #Show images from rev_img
+    images = rev_img(data)
+
+    #Classify the review sentiment of the product
+    summary = summarizer(rev_result)
+
+    
+    
+
+    return render_template('scrape.html', link=link, cus_res=cus_res, cus_rev=rev_result, pro_result=pro_result, rev_img=images, summarize=summary)
+
+    
+
 
 if __name__ == '__main__':
-    app.run(debug=True, host ="localhost", port = int("5000"))    
+    app.secret_key = 'super_secret_key'
+    # Run on port 3000
+    app.run(debug=True, port=3000)
+
+    
