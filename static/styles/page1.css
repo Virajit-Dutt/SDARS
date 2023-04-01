@@ -3,6 +3,11 @@ body{
     background-color:#070708c4;
     font-family: 'Manrope', sans-serif;
 }
+.reviewcss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .logo {
     margin-left: 16vh;
     width: 15%;

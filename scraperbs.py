@@ -2,7 +2,7 @@
 # import module
 import requests
 import openai
-openai.api_key = "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"
+openai.api_key = "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"
 from bs4 import BeautifulSoup
   
 HEADERS = ({'User-Agent':
